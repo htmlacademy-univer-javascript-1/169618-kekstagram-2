@@ -1,1 +1,2 @@
-import {publications} from './data.js';
+import {insertPhotoMiniature} from './photo-miniature.js';
+insertPhotoMiniature()
