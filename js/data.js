@@ -77,10 +77,10 @@ function generatePublication() {
     id: id,
     url: `photos/${id}.jpg`,
     description: DESCRIPTIONS[id - 1],
-    likes: getRandomInteger(15,200),
-    comments: commentsText
+    comments: commentsText,
+    likes: getRandomInteger(15,200)
   };
 }
-const publications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
+const generatePublications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
 
-export {publications};
+export {generatePublications};

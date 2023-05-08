@@ -21,10 +21,10 @@ export function getRandomInteger (from,to) {
 // Функция, возвращающая случайный элемент массива
 export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-// Функция для проверки максимальной длины строки
-export const validateFormLength = (str, maxLength) => {
-  if (typeof str !== 'string') {
-    throw new RangeError('Значение str должно быть строкой');
-  }
-  return str.length <= maxLength;
-};
+// // Функция для проверки максимальной длины строки
+// export const validateFormLength = (str, maxLength) => {
+//   if (typeof str !== 'string') {
+//     throw new RangeError('Значение str должно быть строкой');
+//   }
+//   return str.length <= maxLength;
+// };
