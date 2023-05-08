@@ -16,8 +16,8 @@ const DESCRIPTIONS = [
   'Когда я начинаю следовать своим мечтам, то иду спать.',
   'Время перемен.',
   'Счастье – это путь, а не судьба.',
-  'Парни, чо свучивось?.',
   'Мы должны ценить каждый момент.',
+  'Парни, чо свучивось?',
   'Любите так, как будто вас никогда не ранили.',
   'Должное придёт, случившееся неизменно.',
   'Всё, чего не пожелаем, дано нам будет.',
@@ -77,8 +77,8 @@ function generatePublication() {
     id: id,
     url: `photos/${id}.jpg`,
     description: DESCRIPTIONS[id - 1],
-    comments: commentsText,
-    likes: getRandomInteger(15,200)
+    likes: getRandomInteger(15,200),
+    comments: commentsText
   };
 }
 const generatePublications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
