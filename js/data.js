@@ -1,6 +1,6 @@
 import {getRandomInteger,getRandomElement} from './util.js';
 
-// Генерация публикации
+// Моки
 const PHOTOS_NUMBER = 25;
 
 const DESCRIPTIONS = [
@@ -81,6 +81,5 @@ function generatePublication() {
     comments: commentsText
   };
 }
-const generatePublications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
 
-export {generatePublications};
+export {generatePublication, PHOTOS_NUMBER};
