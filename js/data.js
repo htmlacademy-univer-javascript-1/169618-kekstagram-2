@@ -1,6 +1,6 @@
-import {getRandomInteger,getRandomElement} from './util.js';
+import {getRandomPositiveInteger,getRandomElement} from './util.js';
 
-// Генерация публикации
+// Моки
 const PHOTOS_NUMBER = 25;
 
 const DESCRIPTIONS = [
@@ -50,37 +50,36 @@ const getId = (() => {
 })();
 
 function getCommentId() {
-  let id = getRandomInteger(1, 300);
+  let id = getRandomPositiveInteger(1, 300);
   while (COMMENTS_ID.includes(id)) {
-    id = getRandomInteger(1, 300);
+    id = getRandomPositiveInteger(1, 300);
   }
   return id;
 }
 
 function generateComment() {
   const messagesText = [];
-  for (let i = 0; i < getRandomInteger(1, 2); i++) {
+  for (let i = 0; i < getRandomPositiveInteger(1, 2); i++) {
     messagesText.push(getRandomElement(MESSAGES));
   }
   return {
     id: getCommentId(),
-    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: messagesText.join(' '),
     name: getRandomElement(NAMES)
   };
 }
 
 function generatePublication() {
-  const commentsText = Array.from({length: getRandomInteger(0, 5)}, generateComment);
+  const commentsText = Array.from({length: getRandomPositiveInteger(0, 5)}, generateComment);
   const id = getId();
   return {
     id: id,
     url: `photos/${id}.jpg`,
     description: DESCRIPTIONS[id - 1],
-    likes: getRandomInteger(15,200),
+    likes: getRandomPositiveInteger(15,200),
     comments: commentsText
   };
 }
-const generatePublications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
 
-export {generatePublications};
+export {generatePublication, PHOTOS_NUMBER};

@@ -1,16 +1,13 @@
+import {getCloseListeners} from './util.js';
+
 const bigPicture = document.querySelector('.big-picture');
 
-bigPicture.querySelector('#picture-cancel').addEventListener('click', closeBigPicture);
+const closeButton = bigPicture.querySelector('#picture-cancel');
+const [closeBigPicture, closeEscape] = getCloseListeners(bigPicture, closeButton);
 
-const escapePressed = (ev) => ev.key === 'Escape' && closeBigPicture();
+const avatarImageSize = 35;
 
-function closeBigPicture(){
-  bigPicture.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', escapePressed);
-}
-
-function generateBigPicture({url, likes, description, comments}){
+function renderBigPicture({url, likes, description, comments}){
   bigPicture.querySelector('.big-picture__img').children[0].src = url;
   bigPicture.querySelector('.likes-count').textContent = likes;
   bigPicture.querySelector('.comments-count').textContent = comments.length;
@@ -22,8 +19,8 @@ function generateBigPicture({url, likes, description, comments}){
     avatarImage.classList.add('social__picture');
     avatarImage.src = avatar;
     avatarImage.alt = name;
-    avatarImage.width = 35;
-    avatarImage.height = 35;
+    avatarImage.width = avatarImageSize;
+    avatarImage.height = avatarImageSize;
     const commentText = document.createElement('p');
     commentText.classList.add('social__text');
     commentText.textContent = message;
@@ -35,11 +32,13 @@ function generateBigPicture({url, likes, description, comments}){
   bigPicture.querySelector('.social__caption').textContent = description;
 }
 
-export function showBigPicture(picture){
-  generateBigPicture(picture);
+function showBigPicture(picture){
+  renderBigPicture(picture);
   bigPicture.querySelector('.social__comment-count').classList.add('hidden');
   bigPicture.querySelector('.comments-loader').classList.add('hidden');
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
-  document.addEventListener('keydown', (ev) => escapePressed(ev));
+  document.addEventListener('keydown', closeEscape);
+  closeButton.addEventListener('click', closeBigPicture);
 }
+export {showBigPicture};
