@@ -71,7 +71,7 @@ function generateComment() {
 }
 
 function generatePublication() {
-  const commentsText = Array.from({length: getRandomPositiveInteger(0, 5)}, generateComment);
+  const commentsText = Array.from({length: getRandomPositiveInteger(0, 10)}, generateComment);
   const id = getId();
   return {
     id: id,
