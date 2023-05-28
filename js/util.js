@@ -45,9 +45,13 @@ function isCorrectLength(str, maxLength) {
   return str.length <= maxLength;
 }
 
-// Функция возвращающая введённую строку, в конце которой удалены все пробелы
+// Функция возвращающая введённую строку, удаляя все пробелы в конце
 function trimString(field) {
   field.value = field.value.trimEnd();
 }
 
-export{getRandomPositiveInteger, getRandomElement, getCloseListeners, isCorrectLength, trimString};
+function transformFromHundredProcent(value, max, min, fixed) {
+  return ((value / 100) * (max - min) + min).toFixed(fixed);
+}
+
+export{getRandomPositiveInteger, getRandomElement, getCloseListeners, isCorrectLength, trimString, transformFromHundredProcent};

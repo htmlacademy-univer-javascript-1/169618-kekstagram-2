@@ -420,6 +420,22 @@ main {
   border: 0;
 }
 
+.scale-25{
+  transform: scale(.25);
+}
+
+.scale-50{
+  transform: scale(.50);
+}
+
+.scale-75{
+  transform: scale(.75);
+}
+
+.scale-100{
+  transform: scale(1);
+}
+
 .scale__control {
   position: relative;
 
