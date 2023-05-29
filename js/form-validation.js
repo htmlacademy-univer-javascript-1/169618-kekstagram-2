@@ -24,10 +24,10 @@ function validateDescription(value) {
 }
 
 function validateHashtags(value) {
-  const hashtags = value.split(' ').map((v) => v.toLowerCase());
+  const hashtags = value === '' ? [] : value.split(' ').map((v) => v.toLowerCase());
   return (new Set(hashtags)).size === hashtags.length &&
-    hashtags.length <= hashtagsMaxCount &&
-    hashtags.every((tag) => /^#[а-яa-z0-9]{1,19}}$/.test(tag));
+    hashtags.length <= hashtagsMaxCount && (hashtags.length === 0 ||
+    hashtags.every((tag) => /^#[а-яa-z0-9]{1,19}$/.test(tag)));
 }
 
 export{validator};
