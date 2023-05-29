@@ -689,6 +689,27 @@ main {
  * Блок добавления хэштегов и комментария к изображению
  */
 
+.img-upload__field-wrapper--invalid {
+  display: flex;
+  flex-flow: column;
+}
+
+.img-upload__field-wrapper--invalid > .text__hashtags {
+  margin-bottom: 0;
+}
+
+.img-upload__field-wrapper--invalid > .text__description {
+  margin-bottom: 0;
+}
+
+.img-upload__field__error {
+  color: red;
+  font-size: .75em;
+  width: 450px;
+  margin: 0 auto 20px auto;
+  text-transform: none;
+}
+
 .text {
   margin: 0;
   padding: 0;
@@ -1224,7 +1245,7 @@ main {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 10;
 
   background-color: rgba(0, 0, 0, 0.8);
 }
