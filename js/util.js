@@ -1,4 +1,3 @@
-// Функция, возвращающая случайное целое число из переданного диапазона включительно
 function getRandomPositiveInteger (from,to) {
   let fromTemp = from;
   let toFrom = to;
@@ -18,7 +17,6 @@ function getRandomPositiveInteger (from,to) {
   return Math.round(Math.random() * (toFrom - fromTemp) + fromTemp);
 }
 
-// Функция, возвращающая случайный элемент массива
 function getRandomElement(arr) {
   return arr[getRandomPositiveInteger(0, arr.length - 1)];
 }
@@ -61,7 +59,6 @@ function getCloseListeners(modal, closeButton, callback) {
   return [closeModal, closeOnEscape];
 }
 
-// Функция для проверки максимальной длины строки
 function isCorrectLength(str, maxLength) {
   if (typeof str !== 'string') {
     throw new RangeError('Значение str должно быть строкой');
@@ -69,7 +66,6 @@ function isCorrectLength(str, maxLength) {
   return str.length <= maxLength;
 }
 
-// Функция возвращающая введённую строку, удаляя все пробелы в конце
 function trimString(field) {
   field.value = field.value.trimEnd();
 }
