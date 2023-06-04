@@ -19,4 +19,7 @@ function renderPhotoMiniature(publicationsInfo){
   picturesContainer.appendChild(picturesFragment);
 }
 
-export {renderPhotoMiniature};
+function clearPhotoMiniature(){
+  picturesContainer.querySelectorAll('.picture').forEach((p) => p.remove());
+}
+export {renderPhotoMiniature, clearPhotoMiniature};

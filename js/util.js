@@ -41,7 +41,7 @@ function useOnEscape(elem, callback, prioritise) {
   return [setEvent, removeEvent];
 }
 
-export function getCloseListeners(modal, closeButton, callback) {
+function getCloseListeners(modal, closeButton, callback) {
   const closeOnEscape = (ev) => document.body.classList.toString().split(' ')
     .filter((p) => p.startsWith('modal-prioritise'))
     .map((p) => +p.slice(17))
@@ -94,4 +94,12 @@ function useCloseOnClickOutside(curElem, action) {
   return [setEvent, removeEvent];
 }
 
-export{getRandomPositiveInteger, getRandomElement, useOnEscape, isCorrectLength, trimString, transformFromHundredProcent, stopPropagation, useCloseOnClickOutside};
+function debounce(callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+export{getRandomPositiveInteger, getRandomElement, useOnEscape, getCloseListeners,
+  isCorrectLength, trimString, transformFromHundredProcent, stopPropagation, useCloseOnClickOutside, debounce};
