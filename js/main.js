@@ -3,11 +3,20 @@ import {renderPhotoMiniature} from './photo-miniature.js';
 import {showFileForm} from './form.js';
 import {showFilters} from './filters.js';
 
+const fileInput = document.querySelector('#upload-file');
+const filePreview = document.querySelector('.img-upload__preview').querySelector('img');
+
 getMiniatures()
   .then((r) => {
     renderPhotoMiniature(r);
-    return r;
-  })
-  .then(showFilters);
+    showFilters(r);
+  });
 
-document.querySelector('#upload-file').addEventListener('change', showFileForm);
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if (!['png', 'jpg', 'jpeg'].some((suf) => file.name.toLowerCase().endsWith(suf))){
+    return;
+  }
+  filePreview.src = URL.createObjectURL(file);
+  showFileForm();
+});
