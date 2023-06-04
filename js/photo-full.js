@@ -32,7 +32,6 @@ function showBigPicture(picture) {
   bigPicture.querySelector('.social__comments-loader').removeEventListener('click', updateComments);
   createBigPicture(picture);
 
-  //bigPicture.querySelector('.social__comment-count').classList.add('hidden');
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
   document.addEventListener('keydown', closeEscape);
